@@ -3,14 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Assistant</title>
+    <title>Research Analyzer</title>
     <link rel="stylesheet" href="sidepanel.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h2>Research Assistant</h2>
+            <h2>Research Analyzer</h2>
         </div>
 
+        <div class="actions">
+            <button id="summarizeBtn">Summarize</button>
+            <button id="analyzeBtn" class="secondary">Analyze</button>
+            <button id="keyPointsBtn">Key Points</button>
+            <button id="questionsBtn" class="secondary">Questions</button>
+        </div>
+
+        <div class="notes">
+            <h3>Research Notes</h3>
+            <div class="note-controls">
+                <input type="text" id="tagInput" placeholder="Add tags (comma separated)">
+            </div>
+            <textarea id="notes" placeholder="Start taking notes here..."></textarea>
+            <div class="note-actions">
+                <button id="saveNotesBtn">Save Notes</button>
+                <button id="loadNotesBtn" class="secondary">Load Notes</button>
+                <button id="exportNotesBtn" class="secondary">Export Notes</button>
+                <button id="clearNotesBtn" class="secondary">Clear All Notes</button>
+            </div>
+        </div>
+
+        <div class="assignments-section">
+            <h3>Academic Planner</h3>
+            <div class="assignment-controls">
+                <input type="text" id="assignmentTitle" placeholder="Assignment title">
+                <input type="text" id="assignmentDescription" placeholder="Description">
+                <input type="datetime-local" id="assignmentDeadline">
+                <select id="assignmentPriority">
+                    <option value="low">Low Priority</option>
+                    <option value="medium" selected>Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+                <select id="assignmentCategory">
+                    <option value="research">Research</option>
+                    <option value="assignment">Assignment</option>
+                    <option value="exam">Exam</option>
+                    <option value="meeting">Meeting</option>
+                    <option value="general">General</option>
+                </select>
+                <input type="text" id="assignmentCourse" placeholder="Course (optional)">
+            </div>
+            <div class="assignment-actions">
+                <button id="addAssignmentBtn">Add Assignment</button>
+            </div>
+            <div id="assignmentList" class="assignment-list"></div>
+        </div>
+
+        <div id="results">
+            <div class="empty-state">
+                Select text on a webpage and click an action button to get started
+            </div>
+        </div>
+        
+    </div>
+    <script src="js/utils.js"></script>
+    <script src="js/notes.js"></script>
+    <script src="js/assignments.js"></script>
+    <script src="js/research.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Research Assistant",
+    "name": "Research Analyzer",
     "version": "1.0",
-    "description": "AI-powered Research Assistant",
+    "description": "AI-powered Research Analyzer",
     "permissions": [
         "activeTab",
         "storage",
@@ -10,7 +10,7 @@
         "scripting"
     ],
     "action":{
-        "default_title":"Research Assistant"
+        "default_title":"Research Analyzer"
     },
     "side_panel":{
         "default_path":"sidepanel.html"
