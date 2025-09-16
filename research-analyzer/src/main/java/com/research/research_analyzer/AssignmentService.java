@@ -98,4 +98,30 @@ public class AssignmentService {
     public Assignment getAssignmentById(String id) {
         return assignments.get(id);
     }
+
+    public List<Assignment> searchAssignments(String query) {
+        String lowerQuery = query.toLowerCase();
+        return assignments.values().stream()
+                .filter(assignment -> 
+                    assignment.getTitle().toLowerCase().contains(lowerQuery) ||
+                    (assignment.getDescription() != null && assignment.getDescription().toLowerCase().contains(lowerQuery)) ||
+                    (assignment.getCategory() != null && assignment.getCategory().toLowerCase().contains(lowerQuery)) ||
+                    (assignment.getCourse() != null && assignment.getCourse().toLowerCase().contains(lowerQuery))
+                )
+                .collect(Collectors.toList());
+    }
+
+    public Map<String, Object> getAssignmentStatistics() {
+        Map<String, Object> stats = new HashMap<>();
+        List<Assignment> allAssignments = getAllAssignments();
+        
+        stats.put("total", allAssignments.size());
+        stats.put("completed", getAssignmentsByStatus("completed").size());
+        stats.put("in_progress", getAssignmentsByStatus("in_progress").size());
+        stats.put("not_started", getAssignmentsByStatus("not_started").size());
+        stats.put("overdue", getOverdueAssignments().size());
+        stats.put("upcoming", getUpcomingAssignments().size());
+        
+        return stats;
+    }
 }
